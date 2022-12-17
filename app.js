@@ -15,13 +15,11 @@ function addBook(title, author, pages, read) {
   idCounter++;
 }
 
-addBook("Titulo 1", "Autor 1", "123", true);
+addBook("Steppenwolf", "Hermann Hesse", "416", true);
 showNewBook();
-addBook("Titulo 2", "Autor 2", "23", false);
+addBook("The Gods Themselves", "Isaac Asimov", "304", false);
 showNewBook();
-addBook("Titulo 3", "Autor 3", "624", true);
-showNewBook();
-addBook("Titulo 4", "Autor 4", "235", false);
+addBook("The Name of the Wind", "Patrick Rothfuss ", "672", true);
 showNewBook();
 
 /* Show new book */
@@ -111,11 +109,17 @@ const sendForm = document.querySelector(".sendForm");
 const title = document.querySelector("input[name=title]");
 const author = document.querySelector("input[name=author]");
 const pages = document.querySelector("input[name=pages]");
-const read = document.querySelector("input[name=read]");
+const readBox = document.querySelector("input[name=read]");
+const read = function(){
+  if(readBox.checked){
+    return true
+}else{
+  return false
+}}
 
-sendForm.addEventListener("click", function () {
+sendForm.addEventListener("click", function (event) {
   event.preventDefault();
-  addBook(title.value, author.value, pages.value, read.value);
+  addBook(title.value, author.value, pages.value, read());
   showNewBook();
 });
 
